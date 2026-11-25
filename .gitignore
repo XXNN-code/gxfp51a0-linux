@@ -8,3 +8,5 @@ captures/
 *.png
 core
 .gx51-url
+__pycache__/
+*.pyc
