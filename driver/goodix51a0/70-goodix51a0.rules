@@ -1,0 +1,8 @@
+# This file is part of the goodix51a0 libfprint driver.
+# To override or extend it, place a file in /etc/udev/rules.d
+
+# Huawei MateBook 13 fingerprint sensor (Goodix GXFP51A0, firmware
+# GF_ST411SEC_APP_14108). No in-kernel driver claims the ACPI device, so bind
+# it to spidev the same way libfprint's Elan rules do. Without this the spidev
+# node only exists after a manual driver_override and fprintd finds nothing.
+ACTION=="add|change", SUBSYSTEM=="spi", ENV{MODALIAS}=="acpi:GXFP51A0:*", RUN{builtin}+="kmod load spi:spidev", RUN+="/bin/sh -c 'echo spidev > %S%p/driver_override && echo %k > %S%p/subsystem/drivers/spidev/bind'"

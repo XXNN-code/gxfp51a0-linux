@@ -1,0 +1,10 @@
+build/
+*.o
+*.d
+captures/
+*.pgm
+*.bin
+*.log
+*.png
+core
+.gx51-url
